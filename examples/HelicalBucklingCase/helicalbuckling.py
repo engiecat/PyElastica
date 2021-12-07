@@ -15,7 +15,7 @@ from examples.HelicalBucklingCase.helicalbuckling_postprocessing import (
 class HelicalBucklingSimulator(BaseSystemCollection, Constraints, Forcing):
     pass
 
-
+\
 helicalbuckling_sim = HelicalBucklingSimulator()
 
 # Options
@@ -37,8 +37,8 @@ E = 1e6
 slack = 3
 number_of_rotations = 27
 # For shear modulus of 1e5, nu is 99!
-poisson_ratio = 9
-shear_modulus = E / (poisson_ratio + 1.0)
+poisson_ratio = 0.49   # Numerical Stability
+shear_modulus = E / 2*(poisson_ratio + 1.0)
 shear_matrix = np.repeat(
     shear_modulus * np.identity((3))[:, :, np.newaxis], n_elem, axis=2
 )
